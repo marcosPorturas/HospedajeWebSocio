@@ -20,10 +20,6 @@ public class SocioResponse implements Serializable{
 	private String creationDate;
 	private boolean enabled;
 	
-	public SocioResponse () {
-		super();
-	}
-	
 	public Integer getIdSocio() {
 		return idSocio;
 	}

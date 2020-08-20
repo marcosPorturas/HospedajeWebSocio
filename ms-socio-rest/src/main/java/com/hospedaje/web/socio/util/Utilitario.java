@@ -17,14 +17,6 @@ public class Utilitario {
 		return dateConvert;
 	}
 	
-	public static SocioResponse dtoSocioResponse(Socio socio) {
-		SocioResponse socioResponse = new SocioResponse();
-		socioResponse.setIdSocio(socio.getIdSocio());
-		socioResponse.setNombres(socio.getNombres());
-		socioResponse.setApellidos(socio.getApellidos());
-		socioResponse.setCreationDate(convertirFechaddMMYYYY(socio.getCreationDate()));
-		socioResponse.setEnabled(socio.isEnabled());
-		return socioResponse;
-	}
+	
 	
 }
