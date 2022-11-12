@@ -1,0 +1,111 @@
+openapi: 3.0.1
+info:
+  title: Microservice Partner
+  description: |-
+    This is a sample partner Server based on the OpenAPI 3.0 specification.  You can find out more about
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /partner/listar:
+    get:
+      tags:
+        - partner
+      summary: Finds Partner all info
+      description: find all partner
+      operationId: findPartnerAll
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/PartnersResponse'
+  /partner:
+    post:
+      tags:
+        - partner
+      summary: Finds Partner all info
+      description: find all partner
+      operationId: addPartner
+      requestBody:
+        description: Create a new partner in the Bussines
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartnerRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/PartnersResponse'              
+components:
+  schemas:
+    PartnerRequest:
+      type: object
+      properties:
+        names:
+          type: string
+        lastNames:
+          type: string
+        dni:
+          type: string
+        phone:
+          type: string
+    ContactInfo:
+      type: object
+      properties:
+        telephone: 
+          type: string
+        direction: 
+          type: string
+        birthDate: 
+          type: string
+    RelationshipInfo:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        numberDocument:
+          type: string
+    MemberInfo:
+      type: object
+      properties:
+        creationDate:
+          type: string
+        memebershipDate:
+          type: string
+        userValue:
+          type: string
+        password:
+          type: string
+    PartnerResponse:
+      type: object
+      properties:
+        idPartner:
+          type: integer
+        names:
+          type: string
+        lastNameFather:
+          type: string
+        lastNameMother:
+          type: string
+        contactInfo:
+          $ref : '#/components/schemas/ContactInfo'
+        memberInfo:
+          $ref : '#/components/schemas/MemberInfo'
+        relationshipInfo:
+          $ref : '#/components/schemas/RelationshipInfo'
+    PartnersResponse:
+      type: object
+      properties:
+        partners:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerResponse'  
+          
