@@ -22,7 +22,7 @@ public class SocioController {
 	ClientService clientService;
 	
 	@GetMapping(value = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Maybe<ResponseEntity<PartnersResponse>> controllerParnerList() {
+	public Maybe<ResponseEntity<PartnersResponse>> controllerPartnerList() {
 		return clientService.listarSocios()
 				.map(response -> new ResponseEntity<>(response,HttpStatus.OK))
 				.toMaybe();
