@@ -49,11 +49,25 @@ components:
       properties:
         names:
           type: string
-        lastNames:
+        lastNameMother:
           type: string
-        dni:
+        lastNameFather:
           type: string
-        phone:
+        direction:
+          type: string
+        birthDate:
+          type: string
+        telephone:
+          type: string
+        typeRelathionship:
+          type: integer
+        typeDocument:
+          type: integer
+        numberDocument:
+          type: string
+        userValue:
+          type: string
+        passwordValue:
           type: string
     ContactInfo:
       type: object

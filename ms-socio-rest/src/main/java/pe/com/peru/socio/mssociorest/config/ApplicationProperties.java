@@ -3,10 +3,12 @@ package pe.com.peru.socio.mssociorest.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 
 @Configuration
 public class ApplicationProperties {
-	
+
 	@Value("${socio.codigo.idf0}")
 	public String socioCodigoIdf0;
 
