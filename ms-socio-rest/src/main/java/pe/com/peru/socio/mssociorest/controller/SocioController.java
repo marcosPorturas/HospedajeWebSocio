@@ -13,7 +13,6 @@ import pe.com.peru.socio.mssociorest.model.PartnerResponse;
 import pe.com.peru.socio.mssociorest.model.PartnersResponse;
 import pe.com.peru.socio.mssociorest.service.ClientService;
 
-import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/socio")
@@ -23,24 +22,27 @@ public class SocioController {
 	ClientService clientService;
 	
 	@GetMapping(value = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Maybe<ResponseEntity<PartnersResponse>> controllerPartnerList() {
-		return clientService.listarSocios()
+	public Maybe<ResponseEntity<PartnersResponse>> controllerPartnerList(
+	  @RequestHeader("TransactionId")String transactionId) {
+		return clientService.listarSocios(transactionId)
 				.map(response -> new ResponseEntity<>(response,HttpStatus.OK))
 				.toMaybe();
 
 	}
 
 	@GetMapping(value = "/obtener", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Maybe<ResponseEntity<PartnerResponse>> controllerPartnerGet(@RequestParam Integer idSocio) {
-		return clientService.getSocio(idSocio)
+	public Maybe<ResponseEntity<PartnerResponse>> controllerPartnerGet(@RequestParam Integer idSocio,
+	  @RequestHeader("TransactionId")String transactionId) {
+		return clientService.getSocio(idSocio,transactionId)
 				.map(response -> new ResponseEntity<>(response,HttpStatus.OK))
 				.toMaybe();
 
 	}
 
 	@PostMapping(value = "/agregar", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Maybe<ResponseEntity<PartnerResponse>> controllerPartnerAdd(@RequestBody PartnerRequest partnerRequest) {
-		return clientService.addSocio(partnerRequest)
+	public Maybe<ResponseEntity<PartnerResponse>> controllerPartnerAdd(@RequestBody PartnerRequest partnerRequest,
+	  @RequestHeader("TransactionId")String transactionId) {
+		return clientService.addSocio(partnerRequest,transactionId)
 				.map(response -> new ResponseEntity<>(response,HttpStatus.OK))
 				.toMaybe();
 

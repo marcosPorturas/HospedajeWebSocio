@@ -1,6 +1,6 @@
 package pe.com.peru.socio.mssociorest.builder;
 
-import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import pe.com.peru.socio.mssociorest.entity.Client;
 import pe.com.peru.socio.mssociorest.entity.TypeDocument;
 import pe.com.peru.socio.mssociorest.entity.TypeRelationship;
@@ -11,11 +11,10 @@ import pe.com.peru.socio.mssociorest.util.Utilitario;
 import java.text.ParseException;
 import java.util.Date;
 
+@Slf4j
 public class BuilderPartner {
 	
   public PartnerResponse convertToResponse(Client client) {
-  	Gson gson = new Gson();
-  	System.out.println("Resultado del Entity: ".concat(gson.toJson(client)));
     PartnerResponse response = new PartnerResponse();
     response.setNames(client.getNames());
     response.setLastNameFather(client.getLastNameFather());
@@ -29,6 +28,7 @@ public class BuilderPartner {
   
   public Client convertToEntity(PartnerRequest partnerRequest) throws ParseException {
 	Client client = new Client();
+	client.setEnabled(1);
 	client.setNames(partnerRequest.getNames());
 	client.setLastNameFather(partnerRequest.getLastNameFather());
 	client.setLastNameMother(partnerRequest.getLastNameMother());

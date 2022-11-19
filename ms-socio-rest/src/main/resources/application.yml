@@ -2,6 +2,8 @@ server:
   port: 8013
 
 spring:
+  application:
+    name: ms-socio-rest
   datasource:
     ##url: jdbc:sqlserver://MARCOS;databaseName=BDHOSPEDAJE
     url: jdbc:mysql://localhost:3306/DBCINEWEB

@@ -8,7 +8,7 @@ import pe.com.peru.socio.mssociorest.model.PartnersResponse;
 
 public interface ClientService {
 
-	Single<PartnersResponse> listarSocios();
-	Single<PartnerResponse> getSocio(Integer idSocio);
-	Single<PartnerResponse> addSocio(PartnerRequest partnerRequest);
+	Single<PartnersResponse> listarSocios(String transactionId);
+	Single<PartnerResponse> getSocio(Integer idSocio,String transactionId);
+	Single<PartnerResponse> addSocio(PartnerRequest partnerRequest,String transactionId);
 }
